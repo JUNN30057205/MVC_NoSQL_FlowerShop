@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\FlowerSaleAPI.props" />
+</Project>
