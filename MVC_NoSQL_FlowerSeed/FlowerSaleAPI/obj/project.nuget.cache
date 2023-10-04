@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bPa/4Qmu1XnjushsvPkl39ZyvN6oMW93wOa+OaQILoRv9O2433Q6aehsv8mTXM4tdfVTiUlQE8Q7va2ekjGerQ==",
+  "dgSpecHash": "EiivsbGb7ORb06zHR76UD9tLXVRE+FHI3zDSXdwrL7zNuoNnfXiDNSWtAbedY7tf8XWsPwAg78uGCe1T7qk/eA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hoops\\source\\repos\\JUNN30057205\\MVC_NoSQL_FlowerSeed\\FlowerSaleAPI\\FlowerSaleAPI.csproj",
+  "projectFilePath": "C:\\Users\\hoops\\Source\\Repos\\MVC_NoSQL_FlowerShop\\MVC_NoSQL_FlowerSeed\\FlowerSaleAPI\\FlowerSaleAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hoops\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.11\\microsoft.entityframeworkcore.7.0.11.nupkg.sha512",
     "C:\\Users\\hoops\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.11\\microsoft.entityframeworkcore.abstractions.7.0.11.nupkg.sha512",
