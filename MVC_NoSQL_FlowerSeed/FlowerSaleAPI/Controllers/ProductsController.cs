@@ -1,6 +1,7 @@
 ﻿using FlowerSaleAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FlowerSaleAPI.Controllers
 {
@@ -18,9 +19,34 @@ namespace FlowerSaleAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Product> GetAllProducts()
+        //public IEnumerable<Product> GetAllProducts()
+        //{
+        //    return _shopContext.Products.ToArray();
+        //}
+        public async Task<ActionResult> GetAllProducts()
         {
-            return _shopContext.Products.ToArray();
+            return Ok(await _shopContext.Products.ToArrayAsync());
+        }
+        [Route("api/[controller]")]
+        [HttpGet]
+
+        public async Task<ActionResult> GetProduct(int id)
+        {
+            var product = await _shopContext.Products.FindAsync(id);
+            //here use Ok product
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return Ok(product);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Product>>PostProduct(Product product)
+        {
+            _shopContext.Products.Add(product);
+            await _shopContext.SaveChangesAsync();
+            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
 
         //public ActionResult GetAllProducts()
@@ -34,6 +60,10 @@ namespace FlowerSaleAPI.Controllers
         //{
         //    var product = _shopContext.Products.Find(id);
         //    //here use Ok product
+        //    if(product == null)
+        //    {
+        //        return NotFound();
+        //    }
         //    return Ok(product);
         //}
     }

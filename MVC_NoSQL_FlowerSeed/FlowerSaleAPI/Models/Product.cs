@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace FlowerSaleAPI.Models
 {
@@ -15,6 +16,8 @@ namespace FlowerSaleAPI.Models
         public Decimal Price { get; set; }
 
         public bool IsAvailable { get; set; }
+
+        [Required]
 
         public int CategoryId { get; set; }
 
