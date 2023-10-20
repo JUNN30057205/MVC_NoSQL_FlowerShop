@@ -49,6 +49,48 @@ namespace FlowerSaleAPI.Controllers
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult>PutProduct(int id, Product product)
+        {
+            if(id != product.Id)
+            {
+                return BadRequest();
+            }
+            //here update our data store
+            _shopContext.Entry(product).State = EntityState.Modified;
+            try
+            {
+                await _shopContext.SaveChangesAsync();
+            }
+            //maybe product have been modified already
+            catch(DbUpdateConcurrencyException ex)
+            {
+                if (!_shopContext.Products.Any(p => p.Id == id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }                
+            }
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Product>>DeleteProcudt(int id)
+        {
+            var product = await _shopContext.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            _shopContext.Products.Remove(product);
+            await _shopContext.SaveChangesAsync();
+
+            return product;
+        }
+
         //public ActionResult GetAllProducts()
         //{
         //    return Ok(_shopContext.Products.ToArray());
