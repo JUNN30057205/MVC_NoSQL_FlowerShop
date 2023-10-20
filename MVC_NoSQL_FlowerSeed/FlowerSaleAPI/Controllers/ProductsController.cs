@@ -23,9 +23,36 @@ namespace FlowerSaleAPI.Controllers
         //{
         //    return _shopContext.Products.ToArray();
         //}
-        public async Task<ActionResult> GetAllProducts()
+        public async Task <ActionResult> GetAllProducts([FromQuery] ProductParametersQuery queryParameters)
         {
-            return Ok(await _shopContext.Products.ToArrayAsync());
+            //return Ok(await _shopContext.Products.ToArrayAsync());
+            //when finished Product Controller then:
+            IQueryable<Product> products = _shopContext.Products;
+            if (queryParameters.MinPrice != null)
+            {
+                products = products.Where(
+                    p => p.Price >= queryParameters.MinPrice.Value);
+            }
+            if (queryParameters.MaxPrice != null)
+            {
+                products = products.Where(
+                    p => p.Price <= queryParameters.MaxPrice.Value);
+            }
+            //if (!string.IsNullOrEmpty(queryParameters.SearchTerm))
+            //{
+            //    products = products.Where(
+            //        //p => p.Sku.ToLower().CompareTo(queryParameters.SearchTerm.ToLower()) ||
+            //        p => p.Name.ToLower().Contains(queryParameters.SearchTerm.ToLower()));
+            //}
+            if (!string.IsNullOrEmpty(queryParameters.Name))
+            {
+                products = products.Where(
+                    p => p.Name.ToLower().Contains(queryParameters.Name.ToLower()));    
+            }
+
+            products = products.Skip(queryParameters.Size * (queryParameters.Page - 1)).Take(queryParameters.Size);
+            return Ok(await products.ToArrayAsync());
+
         }
         [Route("api/[controller]")]
         [HttpGet]
