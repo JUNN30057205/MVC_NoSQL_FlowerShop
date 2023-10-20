@@ -38,16 +38,24 @@ namespace FlowerSaleAPI.Controllers
                 products = products.Where(
                     p => p.Price <= queryParameters.MaxPrice.Value);
             }
-            //if (!string.IsNullOrEmpty(queryParameters.SearchTerm))
-            //{
-            //    products = products.Where(
-            //        //p => p.Sku.ToLower().CompareTo(queryParameters.SearchTerm.ToLower()) ||
-            //        p => p.Name.ToLower().Contains(queryParameters.SearchTerm.ToLower()));
-            //}
+            if (!string.IsNullOrEmpty(queryParameters.SearchTerm))
+            {
+                products = products.Where(
+                    //p => p.Sku.ToLower().CompareTo(queryParameters.SearchTerm.ToLower()) ||
+                    p => p.Name.ToLower().Contains(queryParameters.SearchTerm.ToLower()));
+            }
             if (!string.IsNullOrEmpty(queryParameters.Name))
             {
                 products = products.Where(
                     p => p.Name.ToLower().Contains(queryParameters.Name.ToLower()));    
+            }
+            //Sort
+            if (!string.IsNullOrEmpty(queryParameters.sortBy))
+            {
+                if(typeof(Product).GetProperty(queryParameters.sortBy) != null)
+                {
+                    products = products.OrderByCustom(queryParameters.sortBy, queryParameters.SortOrder);
+                }
             }
 
             products = products.Skip(queryParameters.Size * (queryParameters.Page - 1)).Take(queryParameters.Size);

@@ -11,6 +11,6 @@
 
         public string Name { get; set; } = String.Empty;
 
-        //public string SearchTerm { get; set; } = String.Empty;
+        public string SearchTerm { get; set; } = String.Empty;
     }
 }
