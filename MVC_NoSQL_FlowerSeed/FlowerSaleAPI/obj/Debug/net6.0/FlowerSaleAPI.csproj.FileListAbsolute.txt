@@ -84,3 +84,5 @@ C:\Users\hoops\Source\Repos\MVC_NoSQL_FlowerShop\MVC_NoSQL_FlowerSeed\FlowerSale
 C:\Users\hoops\Source\Repos\MVC_NoSQL_FlowerShop\MVC_NoSQL_FlowerSeed\FlowerSaleAPI\obj\Debug\net6.0\FlowerSaleAPI.pdb
 C:\Users\hoops\Source\Repos\MVC_NoSQL_FlowerShop\MVC_NoSQL_FlowerSeed\FlowerSaleAPI\obj\Debug\net6.0\FlowerSaleAPI.genruntimeconfig.cache
 C:\Users\hoops\Source\Repos\MVC_NoSQL_FlowerShop\MVC_NoSQL_FlowerSeed\FlowerSaleAPI\obj\Debug\net6.0\ref\FlowerSaleAPI.dll
+C:\Users\hoops\source\repos\MVC_NoSQL_FlowerShop\MVC_NoSQL_FlowerSeed\FlowerSaleAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+C:\Users\hoops\source\repos\MVC_NoSQL_FlowerShop\MVC_NoSQL_FlowerSeed\FlowerSaleAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
