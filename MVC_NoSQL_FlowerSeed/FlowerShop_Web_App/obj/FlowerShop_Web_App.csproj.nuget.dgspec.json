@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hoops\\source\\repos\\MVC_NoSQL_FlowerShop\\MVC_NoSQL_FlowerSeed\\FlowerShop_Web_App\\FlowerShop_Web_App.csproj": {}
+    "C:\\Users\\hoops\\source\\repos\\JUNN30057205\\FlowerSale_API\\MVC_NoSQL_FlowerSeed\\FlowerShop_Web_App\\FlowerShop_Web_App.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hoops\\source\\repos\\MVC_NoSQL_FlowerShop\\MVC_NoSQL_FlowerSeed\\FlowerShop_Web_App\\FlowerShop_Web_App.csproj": {
+    "C:\\Users\\hoops\\source\\repos\\JUNN30057205\\FlowerSale_API\\MVC_NoSQL_FlowerSeed\\FlowerShop_Web_App\\FlowerShop_Web_App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hoops\\source\\repos\\MVC_NoSQL_FlowerShop\\MVC_NoSQL_FlowerSeed\\FlowerShop_Web_App\\FlowerShop_Web_App.csproj",
+        "projectUniqueName": "C:\\Users\\hoops\\source\\repos\\JUNN30057205\\FlowerSale_API\\MVC_NoSQL_FlowerSeed\\FlowerShop_Web_App\\FlowerShop_Web_App.csproj",
         "projectName": "FlowerShop_Web_App",
-        "projectPath": "C:\\Users\\hoops\\source\\repos\\MVC_NoSQL_FlowerShop\\MVC_NoSQL_FlowerSeed\\FlowerShop_Web_App\\FlowerShop_Web_App.csproj",
+        "projectPath": "C:\\Users\\hoops\\source\\repos\\JUNN30057205\\FlowerSale_API\\MVC_NoSQL_FlowerSeed\\FlowerShop_Web_App\\FlowerShop_Web_App.csproj",
         "packagesPath": "C:\\Users\\hoops\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hoops\\source\\repos\\MVC_NoSQL_FlowerShop\\MVC_NoSQL_FlowerSeed\\FlowerShop_Web_App\\obj\\",
+        "outputPath": "C:\\Users\\hoops\\source\\repos\\JUNN30057205\\FlowerSale_API\\MVC_NoSQL_FlowerSeed\\FlowerShop_Web_App\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hoops\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,34 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.23, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.23, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.23, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.23, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Contracts": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

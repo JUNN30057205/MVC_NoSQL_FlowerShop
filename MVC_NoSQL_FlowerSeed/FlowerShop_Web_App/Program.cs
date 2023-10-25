@@ -1,4 +1,16 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using FlowerShop_Web_App.Data;
+using FlowerShop_Web_App.Areas.Identity.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("FlowerShop_Web_AppContextConnection") ?? throw new InvalidOperationException("Connection string 'FlowerShop_Web_AppContextConnection' not found.");
+
+builder.Services.AddDbContext<FlowerShop_Web_AppContext>(options =>
+    options.UseSqlServer(connectionString));
+
+builder.Services.AddDefaultIdentity<FlowerShop_Web_AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<FlowerShop_Web_AppContext>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -16,6 +28,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 

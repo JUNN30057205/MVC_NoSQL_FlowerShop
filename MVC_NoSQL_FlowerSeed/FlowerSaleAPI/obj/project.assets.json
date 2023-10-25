@@ -891,11 +891,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hoops\\source\\repos\\MVC_NoSQL_FlowerShop\\MVC_NoSQL_FlowerSeed\\FlowerSaleAPI\\FlowerSaleAPI.csproj",
+      "projectUniqueName": "C:\\Users\\hoops\\source\\repos\\JUNN30057205\\FlowerSale_API\\MVC_NoSQL_FlowerSeed\\FlowerSaleAPI\\FlowerSaleAPI.csproj",
       "projectName": "FlowerSaleAPI",
-      "projectPath": "C:\\Users\\hoops\\source\\repos\\MVC_NoSQL_FlowerShop\\MVC_NoSQL_FlowerSeed\\FlowerSaleAPI\\FlowerSaleAPI.csproj",
+      "projectPath": "C:\\Users\\hoops\\source\\repos\\JUNN30057205\\FlowerSale_API\\MVC_NoSQL_FlowerSeed\\FlowerSaleAPI\\FlowerSaleAPI.csproj",
       "packagesPath": "C:\\Users\\hoops\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hoops\\source\\repos\\MVC_NoSQL_FlowerShop\\MVC_NoSQL_FlowerSeed\\FlowerSaleAPI\\obj\\",
+      "outputPath": "C:\\Users\\hoops\\source\\repos\\JUNN30057205\\FlowerSale_API\\MVC_NoSQL_FlowerSeed\\FlowerSaleAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hoops\\AppData\\Roaming\\NuGet\\NuGet.Config",
