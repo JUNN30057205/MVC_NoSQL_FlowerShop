@@ -33,6 +33,17 @@ builder.Services.AddDbContext<ShopContext>(options =>
     options.UseInMemoryDatabase("Shop");
 });
 
+//enable CORS
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder
+            .WithOrigins("https://localhost:7189")
+            .WithHeaders("FlowerShop-api-version");
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -41,10 +52,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+else
+{
+    app.UseHsts();
+}
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors();
 
 app.MapControllers();
 
