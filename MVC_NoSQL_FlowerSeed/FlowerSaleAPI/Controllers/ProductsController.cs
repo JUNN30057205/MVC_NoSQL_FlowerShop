@@ -41,16 +41,22 @@ namespace FlowerSaleAPI.Controllers
                 products = products.Where(
                     p => p.Price <= queryParameters.MaxPrice.Value);
             }
+            //multiple search(Name or storeLocastion)
             if (!string.IsNullOrEmpty(queryParameters.SearchTerm))
             {
-                products = products.Where(
-                    //p => p.Sku.ToLower().CompareTo(queryParameters.SearchTerm.ToLower()) ||
-                    p => p.Name.ToLower().Contains(queryParameters.SearchTerm.ToLower()));
+                products = products.Where(                    
+                    p => p.Name.ToLower().Contains(queryParameters.SearchTerm.ToLower())||
+                         p.StoreLocation.ToLower().Contains(queryParameters.SearchTerm.ToLower()));
             }
             if (!string.IsNullOrEmpty(queryParameters.Name))
             {
                 products = products.Where(
                     p => p.Name.ToLower().Contains(queryParameters.Name.ToLower()));
+            }
+            if (!string.IsNullOrEmpty(queryParameters.storeLocation))
+            {
+                products = products.Where(
+                    p => p.StoreLocation.ToLower().Contains(queryParameters.storeLocation.ToLower()));
             }
             //Sort
             if (!string.IsNullOrEmpty(queryParameters.sortBy))
@@ -126,6 +132,29 @@ namespace FlowerSaleAPI.Controllers
             await _shopContext.SaveChangesAsync();
 
             return product;
+        }
+        //one or multiple delete
+        [HttpPost]
+        [Route("Delete")]
+        public async Task<ActionResult> DeleteMultiple([FromQuery] int[] ids)
+        {
+            var products = new List<Product>();
+            foreach (var id in ids)
+            {
+                var product = await _shopContext.Products.FindAsync(id);
+
+                if (product == null)
+                {
+                    return NotFound();
+                }
+
+                products.Add(product);
+            }
+
+            _shopContext.Products.RemoveRange(products);
+            await _shopContext.SaveChangesAsync();
+
+            return Ok(products);
         }
     }
 
@@ -161,16 +190,37 @@ namespace FlowerSaleAPI.Controllers
                 products = products.Where(
                     p => p.Price <= queryParameters.MaxPrice.Value);
             }
-            if (!string.IsNullOrEmpty(queryParameters.SearchTerm))
+            //multiple Search (name or storeLocation)
+            if (!string.IsNullOrEmpty(queryParameters.SearchTerm)) 
             {
-                products = products.Where(
-                    //p => p.Sku.ToLower().CompareTo(queryParameters.SearchTerm.ToLower()) ||
-                    p => p.Name.ToLower().Contains(queryParameters.SearchTerm.ToLower()));
+                products = products.Where(                    
+                    p => p.Name.ToLower().Contains(queryParameters.SearchTerm.ToLower()) ||
+                         p.StoreLocation.ToLower().Contains(queryParameters.SearchTerm.ToLower())); 
             }
             if (!string.IsNullOrEmpty(queryParameters.Name))
             {
                 products = products.Where(
                     p => p.Name.ToLower().Contains(queryParameters.Name.ToLower()));
+            }
+            if (queryParameters.IsAvailable == true)
+            {
+                products = products.Where(
+                    p => p.IsAvailable == true);
+            }
+            if (queryParameters.IsAvailable == false)
+            {
+                products = products.Where(
+                    p => p.IsAvailable == false);
+            }
+            if (!string.IsNullOrEmpty(queryParameters.storeLocation))
+            {
+                products = products.Where(
+                    p => p.StoreLocation.ToLower().Contains(queryParameters.storeLocation.ToLower())); 
+            }
+            if (queryParameters.PostCode != null)
+            {
+                products = products.Where(
+                    p => p.PostCode == queryParameters.PostCode.Value);
             }
             //Sort
             if (!string.IsNullOrEmpty(queryParameters.sortBy))
@@ -180,7 +230,7 @@ namespace FlowerSaleAPI.Controllers
                     products = products.OrderByCustom(queryParameters.sortBy, queryParameters.SortOrder);
                 }
             }
-
+            //Pagenation
             products = products.Skip(queryParameters.Size * (queryParameters.Page - 1)).Take(queryParameters.Size);
             return Ok(await products.ToArrayAsync());
 
@@ -233,7 +283,7 @@ namespace FlowerSaleAPI.Controllers
             }
             return NoContent();
         }
-
+        
         [HttpDelete("{id}")]
         public async Task<ActionResult<Product>> DeleteProduct(int id)
         {
@@ -247,6 +297,30 @@ namespace FlowerSaleAPI.Controllers
 
             return product;
         }
+        //one or multiple delete
+        [HttpPost]
+        [Route("Delete")]
+        public async Task<ActionResult> DeleteMultiple([FromQuery] int[] ids)
+        {
+            var products = new List<Product>();
+            foreach (var id in ids)
+            {
+                var product = await _shopContext.Products.FindAsync(id);
+
+                if (product == null)
+                {
+                    return NotFound();
+                }
+
+                products.Add(product);
+            }
+
+            _shopContext.Products.RemoveRange(products);
+            await _shopContext.SaveChangesAsync();
+
+            return Ok(products);
+        }
+
 
         //public ActionResult GetAllProducts()
         //{

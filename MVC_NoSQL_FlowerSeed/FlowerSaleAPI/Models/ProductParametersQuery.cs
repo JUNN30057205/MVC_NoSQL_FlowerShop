@@ -12,5 +12,11 @@
         public string Name { get; set; } = String.Empty;
 
         public string SearchTerm { get; set; } = String.Empty;
+
+        public bool? IsAvailable { get; set; }
+
+        public string storeLocation { get; set; } = String.Empty;
+
+        public int? PostCode { get; set; } 
     }
 }
